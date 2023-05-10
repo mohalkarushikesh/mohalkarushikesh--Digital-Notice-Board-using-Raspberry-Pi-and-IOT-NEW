@@ -1,0 +1,43 @@
+pm2 start server.js
+
+
+sudo vi /etc/nginx/sites-available/nodeApp
+
+
+
+server{
+  server_name 165.232.177.116;
+
+      location / {
+        proxy_pass http://localhost:3000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+
+
+service nginx restart
+
+
+
+
+i want to set my public ip 192.168.0.101 and it should not be change how do i do it
+
+
+
+problem 1
+write a script file to start chominum browser when system reboot the system(computer)and go to the http://192.168.0.104/image and display this ( 192.168.0.104/image ) page and auto refresh this page when the uploaded image changes
+
+
+problem 2 
+modhale aws code deploy
+
+public ip 
+
+problem
+authentication 
+
+

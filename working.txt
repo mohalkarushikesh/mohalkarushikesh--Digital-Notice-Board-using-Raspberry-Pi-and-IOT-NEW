@@ -1,0 +1,75 @@
+node install js 
+npm i -s express multer
+
+
+
+
+server side and client side
+
+
+pm2 start 
+nginx restart 
+
+code with harry deployment guide
+
+firewall disable 
+
+
+allow all https traffic
+    sudo apt install ufw
+
+
+chatgpt : allow all http traffic in rasbian os
+
+store folder /public/images
+
+
+
+
+sudo vi /etc/nginx/sites-available/nodeApp
+    public ip address
+
+
+deployment : https://www.codewithharry.com/blogpost/deploy-nodejs-app-on-ubuntu/
+
+
+
+
+
+Edit your web server configuration file:
+
+For Nginx, the main configuration file is usually located at /etc/nginx/nginx.conf. For Apache, the main configuration file is usually located at /etc/apache2/apache2.conf. Use your preferred text editor to open the configuration file.
+
+Add a new server block for HTTPS traffic:
+
+For Nginx, add the following code to your configuration file:
+
+bash
+Copy code
+server {
+    listen 443 ssl;
+    server_name example.com;
+    ssl_certificate /path/to/certificate.crt;
+    ssl_certificate_key /path/to/private.key;
+    # any other SSL-related settings
+    # ...
+    # any other server settings
+    # ...
+}
+Replace example.com with your domain name and /path/to/certificate.crt and /path/to/private.key with the paths to your SSL/TLS certificate and private key, respectively.
+
+
+
+
+
+
+how to get certificate.crt with ip address
+
+    sudo apt-get update
+    sudo apt-get install certbot python3-certbot-nginx
+
+
+    sudo certbot --nginx -d example.com
+                            aissmsnoticeboard.com 
+
+    sudo openssl x509 -in /etc/letsencrypt/live/example.com/cert.pem -text -noout
