@@ -10,3 +10,15 @@
 ##### npm install 
 
 ##### npm start 
+
+
+
+
+
+
+
+
+
+
+
+###### make uplods folder
