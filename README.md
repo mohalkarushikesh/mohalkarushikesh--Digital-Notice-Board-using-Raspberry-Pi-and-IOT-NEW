@@ -3,10 +3,10 @@
 
 
 
-#### git clone https://github.com/mohalkarushikesh/Digital-Notice-Board-using-Raspberry-Pi-and-IOT.git
+##### git clone https://github.com/mohalkarushikesh/Digital-Notice-Board-using-Raspberry-Pi-and-IOT.git
 
-#### cd Digital-Notice-Board-using-Raspberry-Pi-and-IOT
+##### cd Digital-Notice-Board-using-Raspberry-Pi-and-IOT
 
-#### npm install 
+##### npm install 
 
-#### npm start 
+##### npm start 
