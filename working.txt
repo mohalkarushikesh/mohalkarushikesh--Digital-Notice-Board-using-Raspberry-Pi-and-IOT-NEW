@@ -73,3 +73,14 @@ how to get certificate.crt with ip address
                             aissmsnoticeboard.com 
 
     sudo openssl x509 -in /etc/letsencrypt/live/example.com/cert.pem -text -noout
+
+
+
+
+
+
+
+login page :  http://localhost:3000/public/login.html
+
+to see image : http://localhost:3000/image
+
