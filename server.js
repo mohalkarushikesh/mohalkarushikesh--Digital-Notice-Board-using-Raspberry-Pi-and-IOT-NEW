@@ -37,7 +37,7 @@ app.post('/upload', upload.single('file'), (req, res) => {
   }
 
   uploadedFilename = req.file.filename;
-
+  //io.emit('reloadImage');
   res.send({ success: true, filename: uploadedFilename });
 });
 
@@ -81,7 +81,6 @@ app.get('/image', (req, res) => {
   if (!uploadedFilename) {
     return res.status(404).send('No image uploaded.');
   }
-
   res.sendFile(path.join(__dirname, 'public', 'images', uploadedFilename));
 });
 
