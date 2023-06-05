@@ -1,50 +1,114 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Upload Image</title>
-  </head>
-  <body bgcolor="aqua">
-    <center><h1>WECOME TO</h1></center>
+<head>
+  <title>Upload Image</title>
+  <style>
+    body {
+      background-color: aqua;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    #uploadForm {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 30px;
+    }
+
+    #uploadForm input[type="file"] {
+      padding: 10px;
+      border: none;
+      background-color: #f1f1f1;
+      margin-right: 10px;
+    }
+
+    #uploadForm button {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    #imageContainer {
+      display: flex;
+      justify-content: center;
+      margin-top: 30px;
+    }
+
+    #imageContainer img {
+      max-width: 900px;
+      height: auto;
+    }
+
+    footer {
+      background-image: url('footer-bg.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      padding: 30px;
+      text-align: center;
+      color: #ffffff;
+    }
+
+    footer p {
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <center>
+    <h1>WELCOME TO</h1>
     <h1>
-      <marquee> AISSMS INSTITUTE OF INFORMATION TECHNOLOGY </marquee>
+      <marquee>AISSMS INSTITUTE OF INFORMATION TECHNOLOGY</marquee>
     </h1>
 
-    <center>
-      <img src="ioitlogonew.jpg" width="900" height="200" />
+    <img src="ioitlogonew.jpg" width="900" height="200" />
 
-      <h1>SMART INFORMATION DISPLAY SYSTEM</h1>
-      <h1>Upload Image</h1>
-      <form action="/upload" id="uploadForm" enctype="multipart/form-data">
-        <input type="file" name="file" />
-        
-        <button type="submit">Upload</button>
-      </form>
-      <div id="imageContainer"></div>
-    </center>
+    <h1>SMART INFORMATION DISPLAY SYSTEM</h1>
+    <h1>Upload Image</h1>
 
-    <script>
-      const uploadForm = document.querySelector("#uploadForm");
-      const imageContainer = document.querySelector("#imageContainer");
+    <form action="/upload" id="uploadForm" enctype="multipart/form-data">
+      <input type="file" name="file" accept="image/*" />
+      <button type="submit">Upload</button>
+    </form>
 
-      uploadForm.addEventListener("submit", (event) => {
-        event.preventDefault();
+    <div id="imageContainer"></div>
 
-        const formData = new FormData(uploadForm);
+    <footer>
+      <p>&copy; 2023 AISSMS INSTITUTE OF INFORMATION TECHNOLOGY. All rights reserved.</p>
+    </footer>
+  </center>
 
-        fetch("/upload", {
-          method: "POST",
-          body: formData,
+  <script>
+    const uploadForm = document.querySelector("#uploadForm");
+    const imageContainer = document.querySelector("#imageContainer");
+
+    uploadForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const formData = new FormData(uploadForm);
+
+      fetch("/upload", {
+        method: "POST",
+        body: formData,
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.success) {
+            imageContainer.innerHTML = `<img src="/image?filename=${data.filename}" />`;
+          }
         })
-          .then((response) => response.json())
-          .then((data) => {
-            if (data.success) {
-              imageContainer.innerHTML = `<img src="/image?filename=${data.filename}" />`;
-            }
-          })
-          .catch((error) => {
-            console.error(error);
-          });
-      });
-    </script>
-  </body>
+        .catch((error) => {
+          console.error(error);
+        });
+    });
+  </script>
+</body>
 </html>
