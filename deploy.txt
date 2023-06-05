@@ -1,0 +1,76 @@
+How to deploy a Node.js application in production
+In this post, we will see how to run and deploy NodeJS apps in production. Follow the steps below:
+
+Step 1 - Install Nodejs
+Let's download nodejs from Nodesource. NodeSource is a company which provides enterprise-grade Node support and maintains a repository containing the latest versions of Node.js.
+
+curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+Let's install nodejs now:
+
+sudo apt-get install -y nodejs
+Check the installation of node and npm using the following commands:
+
+node --version && npm --version
+You will see the versions of nodejs and npm
+
+Step 2 - Creating a sample nodejs file
+Let's create a sample app and paste some basic code into it.
+
+sudo vi app.js
+Paste the following code inside it:
+
+const express = require('express')
+const app = express()
+const port = 3000
+
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
+
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`)
+})
+Lets now install express so that we can run this app server:
+
+npm install express
+run the application
+
+node app.js
+You should now be able to see the hello world page when you visit http://server-ip:3000
+
+Step 3 - Using pm2 as a process manager
+
+Let's install and use pm2 as a process manager. Install pm2 using the commands below:
+
+sudo npm i pm2 -g
+Start the application using the following command:
+
+pm2 start app.js
+Step 4 - Configuring Nginx as a reverse proxy
+Now let's configure Nginx as a reverse proxy. This will help us get the security features from Nginx. Also, we can serve static content using Nginx.
+
+Let's install Nginx using the following command:
+
+sudo apt install nginx
+Let's create a conf file for our Nodejs app using the command below
+
+sudo vi /etc/nginx/sites-available/nodeApp
+Copy the following content to this file
+
+server{
+  server_name 165.232.177.116;
+
+      location / {
+        proxy_pass http://localhost:3000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+Activate this configuration using the command below:
+
+sudo ln -s /etc/nginx/sites-available/nodeApp /etc/nginx/sites-enabled
+Visit http://your-ip/ and your application should work fine. Happy coding!
+

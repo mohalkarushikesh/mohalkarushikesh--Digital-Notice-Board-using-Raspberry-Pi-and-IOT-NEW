@@ -1,86 +1,37 @@
-node install js 
-npm i -s express multer
+Methodology:
 
+Step 1: Gather Materials, Equipment, and Information
 
+To begin the implementation of the Digital Notice Board, gather the necessary materials and equipment:
 
+- Raspberry Pi (preferably Raspberry Pi 3 or newer)
+- Micro SD Card
+- Power supply for Raspberry Pi
+- HDMI cable
+- Ethernet cable or Wi-Fi adapter
+- USB keyboard and mouse
+- LCD monitor or TV
+- Internet connection
+- Display software (e.g., Info-Beamer, Screenly, Yodeck, VNC viewer)
 
-server side and client side
+Step 2: Set up Raspberry Pi
 
+Install the Raspbian operating system on the Raspberry Pi. This can be done by flashing the Raspbian OS image onto the Micro SD Card using appropriate software. Insert the SD Card into the Raspberry Pi and power it on.
 
-pm2 start 
-nginx restart 
+Step 3: Install Required Software
 
-code with harry deployment guide
+Install the Firefox web browser on the Raspberry Pi. This can be done by opening a terminal and running the necessary commands to install Firefox.
 
-firewall disable 
+Step 4: Set up the Hardware
 
+Connect the Raspberry Pi to the LED monitor, TV, or laptop using an HDMI cable. Ensure that the HDMI cable is securely connected to both the Raspberry Pi and the display device. Connect the USB keyboard and mouse to the Raspberry Pi as well. If using an Ethernet connection, connect the Raspberry Pi to the router using an Ethernet cable. Alternatively, configure the Wi-Fi adapter to connect the Raspberry Pi to the internet wirelessly.
 
-allow all https traffic
-    sudo apt install ufw
+Step 5: Write the Code
 
+Develop a web application for the Digital Notice Board using Node.js as the backend and React.js as the frontend library. Use Nginx as the web server to handle HTTP requests. This combination of technologies allows for efficient and responsive development of the web application.
 
-chatgpt : allow all http traffic in rasbian os
+Step 6: Connect to the Cloud (AWS)
 
-store folder /public/images
+To connect the Digital Notice Board to the cloud, deploy the web application on Amazon Web Services (AWS). Create an AWS account, set up an EC2 instance as a virtual server, and install Nginx and Node.js on the instance. Configure the security settings and upload the codebase of the web application. Set up a domain and SSL certificate for secure communication. Optionally, configure an Elastic Load Balancer (ELB) for scalability and high availability.
 
-
-
-
-sudo vi /etc/nginx/sites-available/nodeApp
-    public ip address
-
-
-deployment : https://www.codewithharry.com/blogpost/deploy-nodejs-app-on-ubuntu/
-
-
-
-
-
-Edit your web server configuration file:
-
-For Nginx, the main configuration file is usually located at /etc/nginx/nginx.conf. For Apache, the main configuration file is usually located at /etc/apache2/apache2.conf. Use your preferred text editor to open the configuration file.
-
-Add a new server block for HTTPS traffic:
-
-For Nginx, add the following code to your configuration file:
-
-bash
-Copy code
-server {
-    listen 443 ssl;
-    server_name example.com;
-    ssl_certificate /path/to/certificate.crt;
-    ssl_certificate_key /path/to/private.key;
-    # any other SSL-related settings
-    # ...
-    # any other server settings
-    # ...
-}
-Replace example.com with your domain name and /path/to/certificate.crt and /path/to/private.key with the paths to your SSL/TLS certificate and private key, respectively.
-
-
-
-
-
-
-how to get certificate.crt with ip address
-
-    sudo apt-get update
-    sudo apt-get install certbot python3-certbot-nginx
-
-
-    sudo certbot --nginx -d example.com
-                            aissmsnoticeboard.com 
-
-    sudo openssl x509 -in /etc/letsencrypt/live/example.com/cert.pem -text -noout
-
-
-
-
-
-
-
-login page :  http://localhost:3000/public/login.html
-
-to see image : http://localhost:3000/image
-
+By following this methodology, you can successfully implement a Digital Notice Board using Raspberry Pi, with the necessary hardware and software components, and connect it to the cloud for enhanced functionality and scalability.

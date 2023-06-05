@@ -5,17 +5,25 @@
     <meta http-equiv="refresh" content="15" />
     <style>
       /* CSS to rotate the image by 90 degrees to the right and display it at 400px by 400px */
+
       #imageContainer {
-        margin-top: 10px;
+        width: 100%;
+        height: 100%;
+        /* border: 5px solid black; */
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 100;
+        /* background-color: rgb(17, 14, 14); */
+        position: absolute;
         margin: 0 auto;
-        margin-left: 10px;
-        margin-right: 10px;
-        width: 1900px;
-        height: 1000px;
+        width: 1980px;
+        height: 1080px;
         display: flex;
         justify-content: center;
         align-items: center;
-        transform: rotate(90deg);
+        /* transform: rotate(90deg); */
       }
 
       img {
@@ -24,7 +32,7 @@
       }
     </style>
   </head>
-  <body>
+  <body bgcolor="aqua">
     <div id="imageContainer">
       <img src="/image" alt="Image" />
     </div>
@@ -32,7 +40,6 @@
     <script>
       const imageContainer = document.querySelector("#imageContainer");
       imageContainer.innerHTML = `<img src="/image" />` + new Date().getTime();
-      
     </script>
   </body>
 </html>

@@ -1,0 +1,25 @@
+To disable sleep mode on a Raspberry Pi, you need to modify the power management settings. Here's how you can achieve that:
+
+1. Open the terminal on your Raspberry Pi or connect to it remotely via SSH.
+2. Edit the configuration file for the power management settings by running the following command:
+   ```
+   sudo nano /etc/xdg/lxsession/LXDE-pi/autostart
+   ```
+   If you are using a different desktop environment, the path may vary slightly. Adjust it accordingly.
+   
+3. In the file that opens, scroll to the bottom and add the following line:
+   ```
+   @xset s noblank
+   ```
+   This line disables the screen blanking that can occur during sleep mode.
+
+4. Save the file by pressing `Ctrl + X`, followed by `Y`, and then press `Enter` to confirm the file name.
+
+5. Reboot your Raspberry Pi for the changes to take effect. You can do this by running the command:
+   ```
+   sudo reboot
+   ```
+
+Once your Raspberry Pi restarts, it should no longer go into sleep mode or display a blank screen due to inactivity.
+
+Please note that this method specifically disables screen blanking, but it does not prevent other components of the Raspberry Pi from entering a low-power mode if configured to do so.

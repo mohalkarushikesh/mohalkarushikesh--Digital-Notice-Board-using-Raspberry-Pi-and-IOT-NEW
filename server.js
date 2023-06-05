@@ -46,7 +46,7 @@ app.post('/login', (req, res) => {
   const password = req.body.password;
 
   // Check the username and password against the expected values
-  if (username === 'aissms' && password === 'ioit') {
+  if (username === 'Aissms' && password === 'ioit') {
     // Set the 'authenticated' property in the session
     req.session.authenticated = true;
 

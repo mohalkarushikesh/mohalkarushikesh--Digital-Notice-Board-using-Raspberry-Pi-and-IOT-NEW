@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
       const username = document.getElementById('username').value;
       const password = document.getElementById('password').value;
   
-      if (username === 'aissms' && password === 'ioit') {
+      if (username === 'Aissms' && password === 'ioit') {
         // Store the username in browser storage
         localStorage.setItem('username', username);
   
