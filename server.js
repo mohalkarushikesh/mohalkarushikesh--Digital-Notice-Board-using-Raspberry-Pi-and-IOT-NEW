@@ -4,6 +4,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const app = express();
+const port = 8888;
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -84,6 +85,6 @@ app.get('/image', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'images', uploadedFilename));
 });
 
-app.listen(3000, () => {
-  console.log('Server started on port 3000');
+app.listen(port, () => {
+  console.log(`Server started on http://localhost:${port}`);
 });
