@@ -1,0 +1,70 @@
+h1 {
+    color: white;
+    text-align: center;
+    margin-top: 20px;
+    text-transform: uppercase;
+  }
+
+  #uploadForm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+  }
+
+  #uploadForm input[type="file"] {
+    padding: 10px;
+    border: none;
+    background-color: #f1f1f1;
+    margin-right: 10px;
+  }
+
+  #uploadForm button {
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+
+  #imageContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    animation: fadeIn 1s ease-in;
+  }
+
+  #imageContainer img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* footer {
+    background-image: url("footer-bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 30px;
+    text-align: center;
+    color: #ffffff;
+    animation: fadeIn 1s ease-in;
+  } */
+
+  footer p {
+    margin: 0;
+  }
+
+  #div2 {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    background-color: #333;
+    padding: 10px;
+    animation: fadeIn 1s ease-in;
+  }
+
+  #div2 h2 {
+    color: white;
+    text-transform: uppercase;
+    margin: 0;
+  }

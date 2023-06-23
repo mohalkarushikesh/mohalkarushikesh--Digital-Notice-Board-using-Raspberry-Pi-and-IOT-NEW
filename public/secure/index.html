@@ -1,114 +1,670 @@
+<!-- <!DOCTYPE html>
+<html>
+  <head>
+    <title>Upload Image</title>
+    <style>
+      body {
+        background-image: url("student.jpeg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      h1 {
+        text-align: center;
+        margin-top: 20px;
+      }
+
+      #uploadForm {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 30px;
+      }
+
+      #uploadForm input[type="file"] {
+        padding: 10px;
+        border: none;
+        background-color: #f1f1f1;
+        margin-right: 10px;
+      }
+
+      #uploadForm button {
+        padding: 10px 20px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+
+      #imageContainer {
+        display: flex;
+        justify-content: center;
+        margin-top: 30px;
+      }
+
+      #imageContainer img {
+        max-width: 900px;
+        height: auto;
+      }
+
+      footer {
+        background-image: url("footer-bg.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        padding: 30px;
+        text-align: center;
+        color: #ffffff;
+      }
+
+      footer p {
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body id="body">
+    <center>
+      <h1>WELCOME TO</h1>
+      <h1>
+        <marquee>AISSMS INSTITUTE OF INFORMATION TECHNOLOGY</marquee>
+      </h1>
+
+      <img src="ioitlogonew.jpg" width="900" height="200" />
+
+      <h1>SMART INFORMATION DISPLAY SYSTEM</h1>
+      <h1>Upload Image</h1>
+
+      <form action="/upload" id="uploadForm" enctype="multipart/form-data">
+        <input type="file" name="file" accept="image/*" />
+        <button type="submit">Upload</button>
+      </form>
+
+      <div id="imageContainer"></div>
+
+      <footer>
+        <p>
+          &copy; 2023 AISSMS INSTITUTE OF INFORMATION TECHNOLOGY. All rights
+          reserved.
+        </p>
+      </footer>
+    </center>
+
+    <script>
+      const uploadForm = document.querySelector("#uploadForm");
+      const imageContainer = document.querySelector("#imageContainer");
+
+      uploadForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const formData = new FormData(uploadForm);
+
+        fetch("/upload", {
+          method: "POST",
+          body: formData,
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.success) {
+              imageContainer.innerHTML = `<img src="/image?filename=${data.filename}" />`;
+            }
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+      });
+    </script>
+  </body>
+</html> -->
+
+<!-- 
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Upload Image</title>
-  <style>
-    body {
-      background-color: aqua;
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-    }
+  <head>
+    <title>Upload Image</title>
+    <style>
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
 
-    h1 {
-      text-align: center;
-      margin-top: 20px;
-    }
 
-    #uploadForm {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-top: 30px;
-    }
+      h1 {
+        color: white;
+        text-align: center;
+        margin-top: 20px;
+        text-transform: uppercase;
+      }
 
-    #uploadForm input[type="file"] {
-      padding: 10px;
-      border: none;
-      background-color: #f1f1f1;
-      margin-right: 10px;
-    }
+      #uploadForm {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 30px;
+      }
 
-    #uploadForm button {
-      padding: 10px 20px;
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      cursor: pointer;
-    }
+      #uploadForm input[type="file"] {
+        padding: 10px;
+        border: none;
+        background-color: #f1f1f1;
+        margin-right: 10px;
+      }
 
-    #imageContainer {
-      display: flex;
-      justify-content: center;
-      margin-top: 30px;
-    }
+      #uploadForm button {
+        padding: 10px 20px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
 
-    #imageContainer img {
-      max-width: 900px;
-      height: auto;
-    }
+      #imageContainer {
+        display: flex;
+        justify-content: center;
+        margin-top: 30px;
+        animation: fadeIn 1s ease-in;
+      }
 
-    footer {
-      background-image: url('footer-bg.jpg');
+      #imageContainer img {
+        max-width: 100%;
+        height: auto;
+      }
+
+
+      footer p {
+        margin: 0;
+      }
+
+      #div2 {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+        background-color: #333;
+        padding: 10px;
+        animation: fadeIn 1s ease-in;
+      }
+
+      #div2 h2 {
+        color: white;
+        text-transform: uppercase;
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+   
+
+    <center>
+      <h1>WELCOME TO</h1>
+      <h1>AISSMS INSTITUTE OF INFORMATION TECHNOLOGY</h1>
+
+    
+
+      <h1>SMART INFORMATION DISPLAY SYSTEM</h1>
+      <h1>Upload Image</h1>
+
+      <form action="/upload" id="uploadForm" enctype="multipart/form-data">
+        <input type="file" name="file" accept="image/*" />
+        <button type="submit">Upload</button>
+      </form>
+
+      <div id="imageContainer"></div>
+
+      
+    </center>
+
+    <script>
+      const uploadForm = document.querySelector("#uploadForm");
+      const imageContainer = document.querySelector("#imageContainer");
+
+      uploadForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const formData = new FormData(uploadForm);
+
+        fetch("/upload", {
+          method: "POST",
+          body: formData,
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.success) {
+              imageContainer.innerHTML = `<img src="/image?filename=${data.filename}" />`;
+            }
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+      });
+    </script>
+  </body>
+</html> -->
+
+<!DOCTYPE html>
+<!--
+	Transitive by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+  <head>
+    <title>Transitive by TEMPLATED</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <style>
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+      h1 {
+        color: white;
+        text-align: center;
+        margin-top: 20px;
+        text-transform: uppercase;
+      }
+
+      #uploadForm {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 30px;
+      }
+
+      #uploadForm input[type="file"] {
+        padding: 10px;
+        border: none;
+        background-color: #f1f1f1;
+        margin-right: 10px;
+      }
+
+      #uploadForm button {
+        padding: 10px 20px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+
+      #imageContainer {
+        display: flex;
+        justify-content: center;
+        margin-top: 30px;
+        animation: fadeIn 1s ease-in;
+      }
+
+      #imageContainer img {
+        max-width: 6%;
+        height: auto;
+      }
+
+      /* footer {
+      background-image: url("footer-bg.jpg");
       background-repeat: no-repeat;
       background-size: cover;
       padding: 30px;
       text-align: center;
       color: #ffffff;
-    }
+      animation: fadeIn 1s ease-in;
+    } */
 
-    footer p {
-      margin: 0;
-    }
-  </style>
-</head>
-<body>
-  <center>
-    <h1>WELCOME TO</h1>
-    <h1>
-      <marquee>AISSMS INSTITUTE OF INFORMATION TECHNOLOGY</marquee>
-    </h1>
+      footer p {
+        margin: 0;
+      }
 
-    <img src="ioitlogonew.jpg" width="900" height="200" />
+      #div2 {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+        background-color: #333;
+        padding: 10px;
+        animation: fadeIn 1s ease-in;
+      }
 
-    <h1>SMART INFORMATION DISPLAY SYSTEM</h1>
-    <h1>Upload Image</h1>
+      #div2 h2 {
+        color: white;
+        text-transform: uppercase;
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header id="header" class="alt">
+      <div class="logo">
+        <!-- <a href="index.html">Transitive <span>by TEMPLATED</span></a> -->
+        <a href="index.html">Empowering Innovators </a>
+      </div>
+      <a href="#menu" class="toggle"><span>Menu</span></a>
+    </header>
 
-    <form action="/upload" id="uploadForm" enctype="multipart/form-data">
-      <input type="file" name="file" accept="image/*" />
-      <button type="submit">Upload</button>
-    </form>
+    <!-- Nav -->
+    <nav id="menu">
+      <ul class="links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#">Generic</a></li>
+        <li><a href="#">Elements</a></li>
+      </ul>
+    </nav>
 
-    <div id="imageContainer"></div>
+    <!-- Banner -->
+    <!--
+			To use a video as your background, set data-video to the name of your video without
+			its extension (eg. images/banner). Your video must be available in both .mp4 and .webm
+			formats to work correctly.
+		-->
+    <section id="banner" data-video="images/banner">
+      <div class="inner">
+        <h1>E-NOTICE BOARD</h1>
+        <h2>ALL INDIA SHRI SHIVAJI MEORIAL SOCIEY</h2>
+        <h2>INSTITUTE OF INFORMATION TECHNOLOGY</h2>
+        <h1>Upload Image</h1>
+
+        <form action="/upload" id="uploadForm" enctype="multipart/form-data">
+          <input type="file" name="file" accept="image/*" />
+          <button type="submit">Upload</button>
+        </form>
+        <div id="imageContainer"></div>
+        <!-- <h1>Transitive</h1> -->
+        <p>
+          Revolutionize communication with our cutting-edge solution: Empowering
+          institutions with an intelligent digital notice board powered by
+          Raspberry Pi and IoT, streamlining information dissemination like
+          never before.
+        </p>
+        <p>
+          created by : Mohalkar Rushikesh, Modhale Rushikesh, Hingane Mrunmai
+        </p>
+        <a href="#one" class="button special scrolly">Get Started</a>
+      </div>
+    </section>
+
+    <!-- One -->
+    <section id="one" class="wrapper style2">
+      <div class="inner">
+        <div>
+          <div class="box">
+            <div class="image fit">
+              <img src="images/pic01.jpg" alt="" />
+            </div>
+            <div class="content">
+              <header class="align-center">
+                <h2>AISSMS IOIT</h2>
+                <p>Unleashing Innovation through Intelligent Technology</p>
+              </header>
+              <hr />
+              <p>
+                AISSMS Institute of Information Technology (IOIT) is a renowned
+                educational institution in Pune, India, offering quality
+                undergraduate and postgraduate programs in IT disciplines. With
+                modern facilities and experienced faculty, IOIT nurtures skilled
+                professionals for the dynamic IT industry.
+              </p>
+              <p>
+                AISSMS IOIT emphasizes practical learning through industry
+                collaborations, internships, and hands-on training, shaping
+                students into innovative thinkers. The institute hosts technical
+                events, workshops, and seminars to keep students updated with
+                the latest advancements. Research and development activities
+                encourage exploration of emerging technologies like AI, data
+                science, IoT, and cybersecurity. With a strong academic
+                foundation and industry-oriented approach, AISSMS IOIT prepares
+                students for success in the global IT landscape.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Two -->
+    <section id="two" class="wrapper style3">
+      <div class="inner">
+        <div id="flexgrid">
+          <div>
+            <header>
+              <h3>Mohalkar Rushikesh</h3>
+            </header>
+            <p>
+              A tech enthusiast with a passion for innovation, Mohalkar
+              Rushikesh excels in exploring cutting-edge technologies. With a
+              strong foundation in electronics, he actively contributes to
+              research and development, seeking novel solutions to real-world
+              challenges.
+            </p>
+            <ul class="actions">
+              <li><a href="#" class="button alt">Learn More</a></li>
+            </ul>
+          </div>
+          <div>
+            <header>
+              <h3>Modhale Rushikesh</h3>
+            </header>
+            <p>
+              Modhale Rushikesh possesses a keen intellect and a strong
+              problem-solving aptitude, continuously striving to push the
+              boundaries of knowledge in the field of electronics and
+              telecommunication engineering.
+            </p>
+            <ul class="actions">
+              <li><a href="#" class="button alt">Learn More</a></li>
+            </ul>
+          </div>
+          <div>
+            <header>
+              <h3>Hingane Mrunmai</h3>
+            </header>
+            <p>
+              With a creative mind and a flair for design, Mrunmai Hingane
+              brings a unique perspective to the world of electronics and
+              telecommunication, combining technical expertise with aesthetic
+              sensibilities.
+            </p>
+            <ul class="actions">
+              <li><a href="#" class="button alt">Learn More</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Three -->
+    <section id="three" class="wrapper style2">
+      <div class="inner">
+        <div class="grid-style">
+          <div>
+            <div class="box">
+              <div class="image fit">
+                <img src="images/pic02.jpg" alt="" />
+              </div>
+              <div class="content">
+                <header class="align-center">
+                  <h2>EMPOWERING DIGITAL COMMUNICATION</h2>
+                  <!-- <p>
+                    Empowering Digital Communication with Raspberry Pi and IoT
+                  </p> -->
+                </header>
+                <hr />
+                <p>
+                  Revolutionize information dissemination with our
+                  state-of-the-art digital notice board solution powered by
+                  Raspberry Pi and IoT. Seamlessly integrating hardware and
+                  software components, we create an intelligent platform for
+                  efficient communication. Stay connected with real-time
+                  updates, personalized notifications, and interactive features,
+                  transforming the way organizations and institutions share
+                  information. Experience the future of communication through
+                  our user-friendly interface and integrated sensors, bridging
+                  the gap between technology and effective information sharing.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="box">
+              <div class="image fit">
+                <img src="images/pic03.png" alt="" />
+              </div>
+              <div class="content">
+                <header class="align-center">
+                  <h2>Seamless Connectivity, Enhanced Engagement</h2>
+                  <!-- <p>Seamless Connectivity. Enhanced Engagement.</p> -->
+                </header>
+                <hr />
+                <p>
+                  Experience the power of seamless connectivity and enhanced
+                  engagement with our IoT-driven digital notice board.
+                  Effortlessly integrate our solution with existing
+                  infrastructures for easy information updates and centralized
+                  management. Engage your audience with captivating displays,
+                  interactive content, and targeted notifications, ensuring
+                  important messages are never overlooked. Say goodbye to
+                  traditional notice boards and embrace the future of
+                  communication as our user-friendly interface adapts to diverse
+                  environments, keeping everyone well-informed and engaged.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Four -->
+    <section id="four" class="wrapper style3">
+      <div class="inner">
+        <header class="align-center">
+          <h2>Advancing Communication with IoT-driven Digital Notice Boards</h2>
+          <p>
+            The implementation of digital notice boards using Raspberry Pi and
+            IoT opens up exciting possibilities for enhanced communication. With
+            advancements in technology, these smart notice boards can become
+            even more interactive and intelligent. Features such as real-time
+            updates, personalized notifications, integration with voice
+            assistants, and data analytics can revolutionize information
+            dissemination. Additionally, incorporating IoT sensors can enable
+            seamless connectivity and automation, creating a dynamic and
+            efficient communication ecosystem. The future holds immense
+            potential for expanding the capabilities of digital notice boards,
+            making them an integral part of smart campuses, organizations, and
+            public spaces.
+          </p>
+        </header>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer" class="wrapper">
+      <div class="inner">
+        <section>
+          <div class="box">
+            <div class="content">
+              <h2 class="align-center">Get in Touch</h2>
+              <hr />
+              <form action="#" method="post">
+                <div class="field half first">
+                  <label for="name">Name</label>
+                  <input name="name" id="name" type="text" placeholder="Name" />
+                </div>
+                <div class="field half">
+                  <label for="email">Email</label>
+                  <input
+                    name="email"
+                    id="email"
+                    type="email"
+                    placeholder="Email"
+                  />
+                </div>
+                <div class="field">
+                  <label for="dept">Department</label>
+                  <div class="select-wrapper">
+                    <select name="dept" id="dept">
+                      <option value="">- Category -</option>
+                      <option value="1">Manufacturing</option>
+                      <option value="1">Shipping</option>
+                      <option value="1">Administration</option>
+                      <option value="1">Human Resources</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="field">
+                  <label for="message">Message</label>
+                  <textarea
+                    name="message"
+                    id="message"
+                    rows="6"
+                    placeholder="Message"
+                  ></textarea>
+                </div>
+                <ul class="actions align-center">
+                  <li>
+                    <input
+                      value="Send Message"
+                      class="button special"
+                      type="submit"
+                    />
+                  </li>
+                </ul>
+              </form>
+            </div>
+          </div>
+        </section>
+      </div>
+    </footer>
 
     <footer>
-      <p>&copy; 2023 AISSMS INSTITUTE OF INFORMATION TECHNOLOGY. All rights reserved.</p>
+      <center>
+      <b> <h3>"Explore, Innovate, and Connect: Empowering the Future of Technology"
+      </h3></b>
+      </center>
     </footer>
-  </center>
+    <!-- <div class="copyright">
+      Powered by: <a href="https://templated.co/">Templated.co</a>.
+    </div> -->
 
-  <script>
-    const uploadForm = document.querySelector("#uploadForm");
-    const imageContainer = document.querySelector("#imageContainer");
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/skel.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
 
-    uploadForm.addEventListener("submit", (event) => {
-      event.preventDefault();
+    <script>
+      const uploadForm = document.querySelector("#uploadForm");
+      const imageContainer = document.querySelector("#imageContainer");
 
-      const formData = new FormData(uploadForm);
+      uploadForm.addEventListener("submit", (event) => {
+        event.preventDefault();
 
-      fetch("/upload", {
-        method: "POST",
-        body: formData,
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          if (data.success) {
-            imageContainer.innerHTML = `<img src="/image?filename=${data.filename}" />`;
-          }
+        const formData = new FormData(uploadForm);
+
+        fetch("/upload", {
+          method: "POST",
+          body: formData,
         })
-        .catch((error) => {
-          console.error(error);
-        });
-    });
-  </script>
-</body>
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.success) {
+              imageContainer.innerHTML = `<img src="/image?filename=${data.filename}" />`;
+            }
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+      });
+    </script>
+  </body>
 </html>
