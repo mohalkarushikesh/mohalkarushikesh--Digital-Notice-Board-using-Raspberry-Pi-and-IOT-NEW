@@ -14,12 +14,3 @@
 
 
 
-
-
-
-
-
-
-
-###### make uplods folder
-# mohalkarushikesh--Digital-Notice-Board-using-Raspberry-Pi-and-IOT-NEW
